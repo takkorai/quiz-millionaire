@@ -20,7 +20,10 @@ $(document).ready(function(){
 	var gameStatus="hasNotStarted";
 
 	$('.answer').click(function(event){
+		console.log("log");
 		event.preventDefault();
+
+		
 		hideShowFunction();
 
 
@@ -32,21 +35,23 @@ $(document).ready(function(){
 			console.log(randomNumber);
 			questionedArray.push(randomNumber);
 			gameStatus="questioned"
-			$("div.a1").replaceWith('<div class="answer a1">'+questionAnswerArray[randomNumber].answer +'</div>');
-			$("div.a2").replaceWith('<div class="answer a2">'+questionAnswerArray[randomNumber].dummyanswer1 +'</div>');
-			$("div.a3").replaceWith('<div class="answer a3">'+questionAnswerArray[randomNumber].dummyanswer2 +'</div>');
-			$("div.a4").replaceWith('<div class="answer a4">'+questionAnswerArray[randomNumber].dummyanswer3 +'</div>');
+			$("div.question").text(questionAnswerArray[randomNumber].question);
+			$("div.a1").text(questionAnswerArray[randomNumber].answer);
+			$("div.a2").text(questionAnswerArray[randomNumber].dummyanswer1);
+			$("div.a3").text(questionAnswerArray[randomNumber].dummyanswer2);
+			$("div.a4").text(questionAnswerArray[randomNumber].dummyanswer3);
+			
 		}
 		else{
 			hideShowFunction();
 			$("div.question").replaceWith('<div class="question">You\'re Finished !</div>');
 		};
 
-
 	});
 
 
 	/*List of Functions*/
+	
 	function hideShowFunction(){
 		$(".logo").addClass("hide");
 		$(".question").removeClass("hide");

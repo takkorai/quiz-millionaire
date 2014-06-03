@@ -45,7 +45,8 @@ $(document).ready(function(){
 			$("div.a2").text(questionAnswerArray[randomNumber].dummyanswer1);
 			$("div.a3").text(questionAnswerArray[randomNumber].dummyanswer2);
 			$("div.a4").text(questionAnswerArray[randomNumber].dummyanswer3);
-			$("div.questionCount").text(questionCount+"/5 Questions")
+			$("div.questioncount").text(questionCount+"/5 Questions");
+			console.log(questionedArray.length-1);
 			
 		}
 		else{

@@ -38,6 +38,7 @@ $(document).ready(function(){
 
 
 			console.log($(this).text());
+			console.log(questionAnswerArray[randomNumber].answer);
 			if($(this).text()==questionAnswerArray[randomNumber].answer) {
 				countCorrect++;
 				console.log("countCorrect:"+countCorrect);

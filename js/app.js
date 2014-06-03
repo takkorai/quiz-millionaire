@@ -18,21 +18,33 @@ $(document).ready(function(){
 	var randomNumber = Math.floor(Math.random() * 5);
 	var questionedArray = [5];
 	var gameStatus="hasNotStarted";
+	var countCorrect = 0;
+
 
 	$('.answer').click(function(event){
-		console.log("log");
 		event.preventDefault();
 
 		
 		hideShowFunction();
 
 
+
+
+
 		if((questionedArray.length-1)!=(questionAnswerArray.length)){
 			while (questionedArray.indexOf(randomNumber)>0){
 					randomNumber = Math.floor(Math.random() * 5);
 				}
-			console.log(questionAnswerArray[randomNumber].question);
-			console.log(randomNumber);
+
+
+			console.log($(this).text());
+			/*if($(this).text()==questionAnswerArray[randomNumber].answer) {
+				countCorrect++;
+				console.log("countCorrect:"+countCorrect);
+			};*/
+
+			
+
 			questionedArray.push(randomNumber);
 			gameStatus="questioned"
 			$("div.question").text(questionAnswerArray[randomNumber].question);

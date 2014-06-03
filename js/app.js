@@ -19,6 +19,7 @@ $(document).ready(function(){
 	var questionedArray = [5];
 	var gameStatus="hasNotStarted";
 	var countCorrect = 0;
+	var questionCount = (questionedArray.length-1)
 
 
 	$('.answer').click(function(event){
@@ -28,25 +29,15 @@ $(document).ready(function(){
 		hideShowFunction();
 
 
-
-
-
-
-
-			console.log($(this).text());
-			console.log(questionAnswerArray[randomNumber].answer);
-
+		if((questionedArray.length-1)!=(questionAnswerArray.length)){
 			if($(this).text()==questionAnswerArray[randomNumber].answer) {
 				countCorrect++;
-				console.log("countCorrect:"+countCorrect);
 			};
 
-			if((questionedArray.length-1)!=(questionAnswerArray.length)){
 			while (questionedArray.indexOf(randomNumber)>0){
 					randomNumber = Math.floor(Math.random() * 5);
-				}
+			}
 			
-
 			questionedArray.push(randomNumber);
 			gameStatus="questioned"
 			$("div.question").text(questionAnswerArray[randomNumber].question);
@@ -54,6 +45,7 @@ $(document).ready(function(){
 			$("div.a2").text(questionAnswerArray[randomNumber].dummyanswer1);
 			$("div.a3").text(questionAnswerArray[randomNumber].dummyanswer2);
 			$("div.a4").text(questionAnswerArray[randomNumber].dummyanswer3);
+			$("div.questionCount").text(questionCount+"/5 Questions")
 			
 		}
 		else{

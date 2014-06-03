@@ -31,19 +31,20 @@ $(document).ready(function(){
 
 
 
-		if((questionedArray.length-1)!=(questionAnswerArray.length)){
-			while (questionedArray.indexOf(randomNumber)>0){
-					randomNumber = Math.floor(Math.random() * 5);
-				}
 
 
 			console.log($(this).text());
 			console.log(questionAnswerArray[randomNumber].answer);
+
 			if($(this).text()==questionAnswerArray[randomNumber].answer) {
 				countCorrect++;
 				console.log("countCorrect:"+countCorrect);
 			};
 
+			if((questionedArray.length-1)!=(questionAnswerArray.length)){
+			while (questionedArray.indexOf(randomNumber)>0){
+					randomNumber = Math.floor(Math.random() * 5);
+				}
 			
 
 			questionedArray.push(randomNumber);

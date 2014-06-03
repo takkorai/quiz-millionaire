@@ -16,10 +16,11 @@ $(document).ready(function(){
 
 
 	var randomNumber = Math.floor(Math.random() * 5);
-	var questionedArray = [5];
+	var questionedArray = [10];
 	var gameStatus="hasNotStarted";
 	var countCorrect = 0;
-	var questionCount = (questionedArray.length-1)
+	var countQuestions =0;
+
 
 
 	$('.answer').click(function(event){
@@ -29,32 +30,47 @@ $(document).ready(function(){
 		hideShowFunction();
 
 
-		if((questionedArray.length-1)!=(questionAnswerArray.length)){
-			if($(this).text()==questionAnswerArray[randomNumber].answer) {
-				countCorrect++;
-			};
+		if(countQuestions<=(questionAnswerArray.length)){
+			countQuestions++;
+			console.log(questionedArray.length-1);
+			console.log(questionAnswerArray.length);
+			console.log(questionedArray);
+			var userAnswer = $(this).text();
 
-			while (questionedArray.indexOf(randomNumber)>0){
+			answerEvaluation(userAnswer);
+
+
+
+			if((questionedArray.length)-1==(questionAnswerArray.length)) {}else
+			{
+				while (questionedArray.indexOf(randomNumber)>0){
 					randomNumber = Math.floor(Math.random() * 5);
+				}
+				$("div.questioncount").text(countQuestions+"/5 Questions");
+				questionedArray.push(randomNumber);
+				gameStatus="questioned"
+				$("div.question").text(questionAnswerArray[randomNumber].question);
+				$("div.a1").text(questionAnswerArray[randomNumber].answer);
+				$("div.a2").text(questionAnswerArray[randomNumber].dummyanswer1);
+				$("div.a3").text(questionAnswerArray[randomNumber].dummyanswer2);
+				$("div.a4").text(questionAnswerArray[randomNumber].dummyanswer3);
 			}
 			
-			questionedArray.push(randomNumber);
-			gameStatus="questioned"
-			$("div.question").text(questionAnswerArray[randomNumber].question);
-			$("div.a1").text(questionAnswerArray[randomNumber].answer);
-			$("div.a2").text(questionAnswerArray[randomNumber].dummyanswer1);
-			$("div.a3").text(questionAnswerArray[randomNumber].dummyanswer2);
-			$("div.a4").text(questionAnswerArray[randomNumber].dummyanswer3);
-			$("div.questioncount").text(questionCount+"/5 Questions");
-			console.log(questionedArray.length-1);
 			
+
 		}
 		else{
 			hideShowFunction();
-			$("div.question").replaceWith('<div class="question">You\'re Finished !</div>');
+			answerEvaluation(userAnswer);
+			gameStatus="completed"
+			$("div.question").text('You\'re Finished !' + 'You got'+countCorrect+' questions correct!' );
 		};
 
 	});
+
+
+
+
 
 
 	/*List of Functions*/
@@ -64,6 +80,13 @@ $(document).ready(function(){
 		$(".question").removeClass("hide");
 		$(".question").removeClass("initial")
 	}
-
+	function answerEvaluation(userAnswer){
+		if(userAnswer==questionAnswerArray[randomNumber].answer && gameStatus!="completed") {
+			countCorrect++;
+		};
+		console.log("userAnswer"+userAnswer);
+		console.log(gameStatus);
+		console.log("countCorrect"+countCorrect);
+	}
 
 });

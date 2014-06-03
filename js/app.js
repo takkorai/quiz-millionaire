@@ -25,11 +25,7 @@ $(document).ready(function(){
 
 	$('.answer').click(function(event){
 		event.preventDefault();
-
-		
 		hideShowFunction();
-
-
 		if(countQuestions<=(questionAnswerArray.length)){
 			countQuestions++;
 			console.log(questionedArray.length-1);
